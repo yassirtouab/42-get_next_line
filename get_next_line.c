@@ -6,12 +6,11 @@
 /*   By: ytouab <ytouab@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 12:31:29 by ytouab            #+#    #+#             */
-/*   Updated: 2022/03/27 18:31:13 by ytouab           ###   ########.fr       */
+/*   Updated: 2022/03/28 01:35:21 by ytouab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 char	*ft_line(char *s)
 {
@@ -19,7 +18,7 @@ char	*ft_line(char *s)
 	char	*line;
 
 	i = 0;
-	if (!s)
+	if (!s[i])
 		return (NULL);
 	while (s[i] && s[i] != '\n')
 		i++;
@@ -32,9 +31,12 @@ char	*ft_line(char *s)
 		line[i] = s[i];
 		i++;
 	}
-	if (ft_strchr(s, '\n'))
-		line[i++] = '\n';
-	line[i] = 0;
+	if (s[i] == '\n')
+	{
+		line[i] = s[i];
+		i++;
+	}
+	line[i] = '\0';
 	return (line);
 }
 
@@ -46,18 +48,20 @@ char	*ft_left_line(char *s)
 
 	i = 0;
 	x = 0;
-	if (!s)
-		return (NULL);
 	while (s[i] && s[i] != '\n')
 		i++;
-	if (s[i] != '\n')
+	if (!s[i])
+	{
+		free(s);
 		return (NULL);
+	}
 	save = (char *)malloc(sizeof(char) * (ft_strlen(s) - i + 1));
 	if (!save)
 		return (NULL);
-	while (s[++i])
-		s[i] = save[x++];
-	save[x] = 0;
+	i++;
+	while (s[i])
+		save[x++] = s[i++];
+	save[x] = '\0';
 	free(s);
 	return (save);
 }
@@ -69,7 +73,9 @@ char	*ft_read(int fd, char *save)
 
 	rd = 1;
 	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	while (rd && !ft_strchr(save, '\n'))
+	if (!buff)
+		return (NULL);
+	while (rd != 0 && !ft_nl_index(save))
 	{
 		rd = read(fd, buff, BUFFER_SIZE);
 		if (rd == -1)
@@ -77,7 +83,7 @@ char	*ft_read(int fd, char *save)
 			free(buff);
 			return (NULL);
 		}
-		buff[rd] = 0;
+		buff[rd] = '\0';
 		save = ft_strjoin(save, buff);
 	}
 	free(buff);

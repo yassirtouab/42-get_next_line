@@ -34,6 +34,7 @@ int	main(void)
 	}
 	if (str)
 		free(str);	
-	return (1);
+	close(fd);
+	return (0);
 
 }
