@@ -6,7 +6,7 @@
 /*   By: ytouab <ytouab@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 12:31:21 by ytouab            #+#    #+#             */
-/*   Updated: 2022/03/27 00:14:23 by ytouab           ###   ########.fr       */
+/*   Updated: 2022/03/27 18:38:43 by ytouab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	a[0] = 0;
 	a[1] = 0;
+	if (!s1)
+	{
+		s1 = (char *)malloc(1);
+		s1[0] = '\0';
+	}
 	if (!s1 || !s2)
 		return (0);
 	a[2] = ft_strlen(s1);
@@ -72,10 +77,13 @@ char	*ft_strjoin(char *s1, char *s2)
 	ret = (char *)malloc((a[2] + a[3] + 1) * sizeof(char));
 	if (!ret)
 		return (0);
-	while (a[0] < a[2])
-	{
-		ret[a[0]] = s1[a[0]];
-		a[0]++;
+	if (s1)
+	{	
+		while (a[0] < a[2])
+		{
+			ret[a[0]] = s1[a[0]];
+			a[0]++;
+		}
 	}
 	while (a[1] < a[3])
 		ret[a[0]++] = s2[a[1]++];

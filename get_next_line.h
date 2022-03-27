@@ -6,7 +6,7 @@
 /*   By: ytouab <ytouab@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 12:31:40 by ytouab            #+#    #+#             */
-/*   Updated: 2022/03/27 00:34:40 by ytouab           ###   ########.fr       */
+/*   Updated: 2022/03/27 18:38:37 by ytouab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
+#  define BUFFER_SIZE 5
 # endif
 
-char	*ft_read(int fd);
+char	*ft_read(int fd, char *save);
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *str);
