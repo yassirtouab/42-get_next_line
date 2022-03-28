@@ -6,7 +6,7 @@
 /*   By: ytouab <ytouab@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 12:31:40 by ytouab            #+#    #+#             */
-/*   Updated: 2022/03/28 01:34:24 by ytouab           ###   ########.fr       */
+/*   Updated: 2022/03/28 17:04:48 by ytouab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 42
 # endif
 
 char	*ft_read(int fd, char *save);
