@@ -6,7 +6,7 @@
 /*   By: ytouab <ytouab@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 12:31:40 by ytouab            #+#    #+#             */
-/*   Updated: 2022/03/28 17:04:48 by ytouab           ###   ########.fr       */
+/*   Updated: 2022/03/29 15:34:10 by ytouab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # endif
 
 char	*ft_read(int fd, char *save);
+char	*ft_left_line(char *s);
+char	*ft_line(char *s);
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char *s1, char *s2);
